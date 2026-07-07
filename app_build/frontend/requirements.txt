@@ -1,0 +1,14 @@
+# ============================================
+# Real-Time Weapon Tracking App — Streamlit Frontend
+# Python Dependencies
+# ============================================
+
+# --- UI Framework ---
+streamlit>=1.30.0
+
+# --- Computer Vision ---
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# --- WebSocket Client ---
+websocket-client>=1.7.0
