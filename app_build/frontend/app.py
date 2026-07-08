@@ -379,6 +379,23 @@ with st.sidebar:
                 st.session_state.tracking_active = False # Force worker reload
                 st.rerun()
 
+    # Android Chrome HTTPS workaround note
+    if st.session_state.virtual_cams:
+        with st.expander("⚠️ Android Chrome Camera Fix", expanded=False):
+            st.markdown(f"""
+**Phone camera not loading?**  
+Modern mobile browsers block camera access over local HTTP connections. If you're on an Android phone, here is the official workaround:
+
+1. Open Chrome on your phone and go to:  
+   `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
+2. Under "Insecure origins treated as secure", enter exactly:  
+   **`{backend_url}`**
+3. Change the dropdown from **Disabled** to **Enabled**.
+4. Tap **Relaunch**.
+
+Your phone will now allow the dashboard to access the camera over the local Wi-Fi!
+            """)
+
     
     # Combine selected sources
     camera_sources = []
