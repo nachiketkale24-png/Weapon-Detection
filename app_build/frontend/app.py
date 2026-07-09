@@ -71,12 +71,7 @@ def get_box_color(track_id: int | None) -> tuple:
         return (0, 0, 255)
     return BOX_COLORS[track_id % len(BOX_COLORS)]
 
-WEAPON_DISPLAY_MAP = {
-    "knife": "weapon",
-    "pistol": "weapon",
-    "gun": "weapon",
-    "rifle": "weapon",
-}
+
 
 def draw_detections(frame, detections, conf_threshold, thickness, f_scale, draw_confidence):
     drawn_count = 0
@@ -88,8 +83,7 @@ def draw_detections(frame, detections, conf_threshold, thickness, f_scale, draw_
         x1, y1, x2, y2 = [int(c) for c in bbox]
         track_id = det.get("track_id")
         
-        raw_class_name = det.get("class_name", "unknown")
-        class_name = WEAPON_DISPLAY_MAP.get(raw_class_name, raw_class_name)
+        class_name = det.get("class_name", "unknown")
         
         color = get_box_color(track_id)
 

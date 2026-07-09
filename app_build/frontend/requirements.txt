@@ -12,3 +12,7 @@ numpy>=1.24.0
 
 # --- WebSocket Client ---
 websocket-client>=1.7.0
+
+# --- Networking & Utils ---
+requests>=2.31.0
+qrcode[pil]>=7.4.2

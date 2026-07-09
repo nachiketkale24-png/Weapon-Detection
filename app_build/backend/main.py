@@ -20,7 +20,7 @@ from ultralytics import YOLO
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-MODEL_PATH = os.environ.get("MODEL_PATH", "best.pt")
+MODEL_PATH = os.environ.get("MODEL_PATH", "yolo11n.pt")
 CONFIDENCE_THRESHOLD = float(os.environ.get("CONFIDENCE_THRESHOLD", "0.25"))
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)-7s | %(message)s", datefmt="%H:%M:%S")
@@ -184,12 +184,19 @@ def run_inference_sync(model: YOLO, frame: np.ndarray, frame_count: int) -> dict
         result = results[0]
         if result.boxes is not None and len(result.boxes) > 0:
             boxes = result.boxes
-            MY_CLASSES = {0: "knife", 1: "gun", 2: "sword", 3: "rifle", 4: "pistol", 5: "unknown_weapon"}
+            is_coco = model.names and model.names.get(0) == 'person'
+            MY_CLASSES = {
+                0: "weapon"
+            }
             for i in range(len(boxes)):
                 bbox = [round(c, 1) for c in boxes.xyxy[i].tolist()]
                 conf = float(boxes.conf[i])
                 class_id = int(boxes.cls[i])
-                class_name = MY_CLASSES.get(class_id, f"class_{class_id}")
+                
+                if is_coco:
+                    class_name = model.names.get(class_id, f"class_{class_id}")
+                else:
+                    class_name = MY_CLASSES.get(class_id, f"class_{class_id}")
                 track_id = int(boxes.id[i]) if boxes.id is not None else None
 
                 detections.append({
