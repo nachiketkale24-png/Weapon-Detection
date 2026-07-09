@@ -44,3 +44,6 @@ Thumbs.db
 
 # Agent custom directory
 .agents/
+
+# Large Model Files
+hello.pt
