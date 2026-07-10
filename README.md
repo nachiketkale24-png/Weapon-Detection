@@ -1,4 +1,4 @@
-# Weapon Detection System
+# Weapon Detection System (Updated)
 
 A real-time weapon detection application that uses computer vision (YOLO) to identify weapons from camera feeds. 
 
