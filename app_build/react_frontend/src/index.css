@@ -1,0 +1,806 @@
+/* =====================================================
+   WEAPON DETECTION SYSTEM
+   Global Theme
+===================================================== */
+
+:root{
+
+    --bg:#05090f;
+
+    --surface:#101820;
+
+    --surface2:#16222d;
+
+    --border:rgba(255,255,255,.08);
+
+    --primary:#37d67a;
+
+    --primary-hover:#49e38b;
+
+    --danger:#ef4444;
+
+    --text:#ffffff;
+
+    --text2:#b9c3cf;
+
+    --radius:18px;
+
+    --transition:.25s ease;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+    width:100%;
+    min-height:100vh;
+}
+
+body{
+
+    font-family:
+    Inter,
+    "Segoe UI",
+    sans-serif;
+
+    color:var(--text);
+
+    background:
+    radial-gradient(circle at top,#102131 0%,#071018 35%,#05090f 100%);
+
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    transition:var(--transition);
+
+    font-family:inherit;
+
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+.page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:26px 18px;
+
+}
+
+.container{
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:0 auto;
+
+}
+
+/* ================= Header ================= */
+
+.page-title{
+
+    font-size:clamp(30px,3.4vw,40px);
+
+    font-weight:800;
+
+    text-align:center;
+
+}
+
+.page-subtitle{
+
+    margin-top:10px;
+
+    margin-bottom:14px;
+
+    text-align:center;
+
+    font-size:15px;
+
+    color:var(--text2);
+
+}
+
+/* ================= Upload Cards ================= */
+
+.upload-grid{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-top:26px;
+
+}
+
+.upload-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        180deg,
+        rgba(22,34,45,.95),
+        rgba(12,20,28,.98)
+    );
+
+    border:1px solid rgba(55,214,122,.15);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    transition:.35s ease;
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.45);
+
+}
+
+.upload-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:rgba(55,214,122,.08);
+
+    top:-65px;
+    right:-65px;
+
+    transition:.4s;
+
+}
+
+.upload-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#37d67a;
+
+    box-shadow:
+        0 20px 45px rgba(55,214,122,.15);
+
+}
+
+.upload-card:hover::before{
+
+    transform:scale(1.3);
+
+}
+
+.upload-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--primary);
+
+    box-shadow:
+    0 0 25px rgba(55,214,122,.18);
+
+}
+
+.upload-icon{
+
+    width:68px;
+
+    height:68px;
+
+    margin:auto;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(55,214,122,.08);
+
+    border:1px solid rgba(55,214,122,.2);
+
+    transition:.3s;
+
+}
+
+.upload-card:hover .upload-icon{
+
+    transform:scale(1.08);
+
+    background:rgba(55,214,122,.12);
+
+}
+
+.upload-title{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+.upload-description{
+
+    margin-top:10px;
+
+    text-align:center;
+
+    color:var(--text2);
+
+    line-height:1.6;
+
+}
+
+.upload-button{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:14px;
+
+width:100%;
+
+margin-top:28px;
+
+padding:14px;
+
+border-radius:14px;
+
+background:#37d67a;
+
+color:#081018;
+
+font-size:15px;
+
+font-weight:700;
+
+}
+
+.upload-button:hover{
+
+background:#52e892;
+
+transform:translateY(-2px);
+
+}
+
+.upload-button:hover{
+
+    transform:scale(1.03);
+
+}
+
+.file-types{
+
+    margin-top:32px;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.file-type{
+
+    background:#1b2733;
+
+    color:#cfd8e3;
+
+    padding:10px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+}
+
+/* ================= Detect Button ================= */
+
+.detect-button{
+
+    display:block;
+
+    width:320px;
+
+    max-width:100%;
+
+    margin:55px auto 0;
+
+    padding:17px;
+
+    border-radius:999px;
+
+    background:var(--primary);
+
+    color:#081018;
+
+    font-size:20px;
+
+    font-weight:800;
+
+}
+
+.detect-button:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-3px);
+
+}
+
+/* ================= Footer ================= */
+
+.footer-text{
+
+    margin-top:28px;
+
+    text-align:center;
+
+    color:var(--text2);
+
+}
+
+/* ================= Mobile ================= */
+
+@media(max-width:900px){
+
+.upload-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.page-title{
+
+font-size:34px;
+
+}
+
+.upload-card{
+
+padding:28px;
+
+}
+
+}
+
+
+
+
+.card-buttons{
+
+margin-top:20px;
+
+display:flex;
+
+justify-content:center;
+
+gap:12px;
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+.action-buttons{
+
+margin-top:36px;
+
+display:flex;
+
+justify-content:center;
+
+gap:16px;
+
+flex-wrap:wrap;
+
+}
+
+.download-btn{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+padding:14px 26px;
+
+background:#37d67a;
+
+color:#071018;
+
+border-radius:14px;
+
+font-size:14px;
+
+font-weight:700;
+
+transition:.3s;
+
+}
+
+.download-btn:hover{
+
+transform:translateY(-4px);
+
+background:#53e993;
+
+box-shadow:
+0 10px 25px rgba(55,214,122,.25);
+
+}
+
+.new-btn{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+padding:14px 26px;
+
+background:#1a2732;
+
+color:white;
+
+border-radius:14px;
+
+font-size:14px;
+
+font-weight:700;
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.3s;
+
+}
+
+.new-btn:hover{
+
+transform:translateY(-4px);
+
+border-color:#37d67a;
+
+}
+
+@media(max-width:700px){
+
+.action-buttons{
+
+flex-direction:column;
+
+}
+
+.download-btn,
+.new-btn{
+
+width:100%;
+
+}
+
+}
+
+/* ==============================
+   LIVE CAMERA
+============================== */
+
+.live-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:18px;
+
+flex-wrap:wrap;
+
+gap:12px;
+
+}
+
+.live-title{
+
+display:flex;
+
+align-items:flex-start;
+
+gap:12px;
+
+}
+
+.live-title svg,
+.live-title img{
+
+margin-top:6px;
+
+}
+
+.live-card{
+
+background:linear-gradient(180deg,#111b23,#16252f);
+
+border:1px solid rgba(55,214,122,.15);
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:0 15px 35px rgba(0,0,0,.3);
+
+display:flex;
+
+flex-direction:column;
+
+height:100%;
+
+}
+
+.live-card-header{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:12px 16px;
+
+font-size:13px;
+
+font-weight:600;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+flex-shrink:0;
+
+}
+
+.live-badge{
+
+margin-left:auto;
+
+background:#37d67a;
+
+color:#081018;
+
+padding:4px 10px;
+
+border-radius:999px;
+
+font-size:10px;
+
+font-weight:700;
+
+}
+
+.live-stream{
+
+width:100%;
+
+flex:1 1 auto;
+
+min-height:0;
+
+object-fit:cover;
+
+display:block;
+
+background:black;
+
+}
+
+.back-button{
+
+display:flex;
+
+align-items:center;
+
+gap:7px;
+
+padding:8px 14px;
+
+background:#1b2a34;
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:12px;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+font-size:14px;
+
+}
+
+.back-button:hover{
+
+border-color:#37d67a;
+
+transform:translateY(-2px);
+
+}
+
+/* ===========================
+   LIVE DASHBOARD
+=========================== */
+
+.live-layout{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:18px;
+
+margin-top:16px;
+
+align-items:stretch;
+
+}
+
+.analytics-panel{
+
+background:linear-gradient(180deg,#111b23,#17252f);
+
+border:1px solid rgba(55,214,122,.15);
+
+border-radius:18px;
+
+padding:16px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+overflow-y:auto;
+
+}
+
+.analytics-title{
+
+display:flex;
+
+align-items:center;
+
+gap:7px;
+
+font-size:16px;
+
+font-weight:700;
+
+margin-bottom:4px;
+
+}
+
+.live-stat{
+
+display:flex;
+
+align-items:center;
+
+gap:11px;
+
+padding:11px;
+
+background:#1c2b35;
+
+border-radius:12px;
+
+border:1px solid rgba(255,255,255,.06);
+
+}
+
+.live-stat h4{
+
+font-size:12px;
+
+margin-bottom:3px;
+
+}
+
+.live-stat p{
+
+font-size:11px;
+
+color:#9ca3af;
+
+}
+
+.live-note{
+
+margin-top:auto;
+
+padding:11px;
+
+border-radius:12px;
+
+background:rgba(55,214,122,.08);
+
+border:1px solid rgba(55,214,122,.2);
+
+font-size:11px;
+
+line-height:1.5;
+
+color:#cbd5e1;
+
+}
+
+@media(max-width:1100px){
+
+.live-layout{
+
+grid-template-columns:1fr;
+
+}
+
+}
