@@ -434,7 +434,8 @@ def generate_live_frames():
 
                 confidence = float(box.conf[0]) * 100
 
-                label = f"Weapon {confidence:.0f}%"
+                label = f"Weapon Detected"
+                #label = f"Weapon {confidence:.0f}%"
 
                 cv2.rectangle(
                     annotated_frame,
